@@ -20,15 +20,15 @@ Certifique-se que tem instalado na sua máquina o Java!
 
 ## Execução:
 
-**1)** Correr a aplicação no terminal com os seguintes argumentos: FFSync <CaminhoCompletoDaDiretoria> <IpClienteValido>
+**1)** Correr a aplicação no terminal com os seguintes argumentos: FFSync <<CaminhoCompletoDaDiretoria>> <<IpClienteValido>>
 
 ---
 
 **Notas**
 
-***1)*** O argumento <IpClienteValido> refere-se ao ip do cliente (certifique-se que este é válido, isto é, existe) com quem se deseja sincronizar.
+**1)** O argumento <IpClienteValido> refere-se ao ip do cliente (certifique-se que este é válido, isto é, existe) com quem se deseja sincronizar.
 
-***2)*** O ficheiro jar (executável java) encontra-se na pasta <out\artifacts\FolderFastSync_jar>.
+**2)** O ficheiro jar (executável java) encontra-se na pasta <out\artifacts\FolderFastSync_jar>.
 
 ---
 
