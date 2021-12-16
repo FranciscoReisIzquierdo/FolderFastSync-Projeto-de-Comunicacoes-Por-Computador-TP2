@@ -20,7 +20,13 @@ Certifique-se que tem instalado na sua máquina o Java!
 
 ## Execução:
 
-**1)** Correr a aplicação no terminal com os seguintes argumentos: FFSync <caminhoCompletoDaDiretoria> <ipClienteValido>
+**1)** Correr a aplicação no terminal com os seguintes argumentos: FFSync ***CaminhoCompletoDaPastaASincronizar*** ***ipClienteValido***
+
+**Exemplo de Execução**
+
+-> FFSync C:\Users\example\tp2-folder1 10.2.2.1
+
+**Caso queriamos sincronizar a nossa pasta ***tp2-folder1*** com o cliente cujo ip é dado por ***10.2.2.1*** **
 
 ---
 
