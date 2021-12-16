@@ -26,7 +26,7 @@ Certifique-se que tem instalado na sua máquina o Java!
 
 -> FFSync C:\Users\example\tp2-folder1 10.2.2.1
 
-**Caso queriamos sincronizar a nossa pasta ***tp2-folder1*** com o cliente cujo ip é dado por ***10.2.2.1*** **
+**Caso queriamos sincronizar a nossa pasta ***tp2-folder1*** com o cliente cujo ip é dado por ***10.2.2.1*****
 
 ---
 
