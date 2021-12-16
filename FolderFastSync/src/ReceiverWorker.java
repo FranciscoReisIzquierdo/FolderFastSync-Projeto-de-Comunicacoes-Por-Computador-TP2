@@ -348,6 +348,7 @@ public class ReceiverWorker implements Runnable{
         String fileName= getFileName(hashNumberFile);
 
         this.logFile.write(("FYN packet received from file: " + fileName + "\n").getBytes(StandardCharsets.UTF_8));
+        if(hashNumberFile!= -1) System.out.println("File " + fileName + " sent!");
         this.mapSender.put(hashNumberFile, -1);
         if (hashNumberFile == -1 && !this.otherList.isEmpty()) sendFiles();
         //Verificar condições de saída
@@ -367,6 +368,7 @@ public class ReceiverWorker implements Runnable{
         Receive.LASTNumber++;
         String fileName= getFileName(hashNumberFile);
         this.logFile.write(("Last packet received from file: " + fileName + "\n").getBytes(StandardCharsets.UTF_8));
+        System.out.println("File " + fileName + " received!");
         try{
             this.filesReceived.get(hashNumberFile).close();
             this.mapReceiver.put(hashNumberFile, -1);
@@ -459,7 +461,7 @@ public class ReceiverWorker implements Runnable{
             //File chunk corrupted
             if (hashNumberPacket != hash(decryptedInfo));
 
-            //Packet duplicated
+                //Packet duplicated
             else if (packetNumber < expectedNumberPacket) { duplicatedPacketHandler(packetNumber, hashNumberFile, realInfo.length); }
 
             //Packet fine

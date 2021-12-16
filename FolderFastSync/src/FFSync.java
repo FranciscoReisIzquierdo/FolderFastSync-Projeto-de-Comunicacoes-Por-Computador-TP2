@@ -8,19 +8,16 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Main {
+public class FFSync {
 
     public static void main(String[] args) throws SocketException, InterruptedException, FileNotFoundException, UnknownHostException {
         if(args.length< 2 || args.length> 3){
             System.out.println("Number of arguments invalid");
             return;
         }
-        int port1= 50001;
-        int port2= 50000;
-
-        //192.168.56.1
 
         InetAddress ipDest= InetAddress.getByName(args[1]);
+
         File f= new File(args[0]);
         if(!f.exists()){
             System.out.println("The file path doesn't exist");
@@ -41,18 +38,9 @@ public class Main {
             pass= String.valueOf(passwordArray);
         }
 
-        if(args.length== 2) {
-            DatagramSocket s1 = new DatagramSocket(port1);
-            Thread r1 = new Thread(new Receive(s1, l, port2, args[0], pass, ipDest));
-            r1.start();
-            r1.join();
-        }
-
-        else if (args.length== 3){
-            DatagramSocket s2= new DatagramSocket(port2);
-            Thread r2 = new Thread(new Receive(s2, l, port1, args[0], pass, ipDest));
-            r2.start();
-            r2.join();
-        }
+        DatagramSocket s1 = new DatagramSocket(80);
+        Thread r1 = new Thread(new Receive(s1, l, 80, args[0], pass, ipDest));
+        r1.start();
+        r1.join();
     }
 }

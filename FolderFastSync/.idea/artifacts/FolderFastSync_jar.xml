@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FolderFastSync:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FolderFastSync_jar</output-path>
+    <root id="archive" name="FolderFastSync.jar">
+      <element id="module-output" name="FolderFastSync" />
+    </root>
+  </artifact>
+</component>

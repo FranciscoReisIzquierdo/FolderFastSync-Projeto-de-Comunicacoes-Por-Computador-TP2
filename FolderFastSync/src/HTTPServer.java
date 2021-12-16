@@ -17,7 +17,7 @@ public class HTTPServer implements Runnable{
     private List<String> otherList;
 
     private ReentrantLock lock;
-    private InetAddress cliente1IP;
+
     private InetAddress cliente2IP;
     private String folder;
 
@@ -28,18 +28,16 @@ public class HTTPServer implements Runnable{
      * Constructor creates a socket at port 80 to handle TCP connection
      * @param myListOfFiles
      * @param otherList
-     * @param ip1
      * @param ip2
      * @param serverLock
      * @param folder
      * @throws IOException
      */
-    public HTTPServer(List<String> myListOfFiles, List<String> otherList, InetAddress ip1, InetAddress ip2, ReentrantLock serverLock, String folder) throws IOException {
+    public HTTPServer(List<String> myListOfFiles, List<String> otherList, InetAddress ip2, ReentrantLock serverLock, String folder) throws IOException {
         try {
             this.http_server = new ServerSocket(port);
             this.myListOfFiles = myListOfFiles;
             this.otherList = otherList;
-            this.cliente1IP= ip1;
             this.cliente2IP= ip2;
             this.lock= serverLock;
             this.folder= folder;
@@ -64,7 +62,7 @@ public class HTTPServer implements Runnable{
                 while (true) {
                     //HTTP socket is listening for clients
                     Socket client = this.http_server.accept();
-                    Thread dedicated_thread = new Thread(new HTTPCLient(client, this.myListOfFiles, this.otherList, this.cliente1IP, this.cliente2IP, this.lock, this.folder));
+                    Thread dedicated_thread = new Thread(new HTTPClient(client, this.myListOfFiles, this.otherList, this.cliente2IP, this.lock, this.folder));
                     dedicated_thread.start();
                 }
             } catch (IOException ignored) {

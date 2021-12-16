@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UDP_teste.iml" filepath="$PROJECT_DIR$/UDP_teste.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FolderFastSync.iml" filepath="$PROJECT_DIR$/FolderFastSync.iml" />
     </modules>
   </component>
 </project>

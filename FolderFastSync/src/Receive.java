@@ -72,7 +72,7 @@ public class Receive implements Runnable {
     public void run() {
         HTTPServer httpServer= null;
         try {
-            httpServer = new HTTPServer(this.myListOfFiles, this.otherList, InetAddress.getLocalHost(), this.dest, this.httpLock, this.folder); }
+            httpServer = new HTTPServer(this.myListOfFiles, this.otherList, this.dest, this.httpLock, this.folder); }
         catch (IOException e) { e.printStackTrace(); }
 
         Thread server= new Thread(httpServer);

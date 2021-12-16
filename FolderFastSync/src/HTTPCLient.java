@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class HTTPCLient implements Runnable{
+public class HTTPClient implements Runnable{
 
     private Socket client;
     //The folder we want to sync
@@ -19,15 +19,14 @@ public class HTTPCLient implements Runnable{
     private List<String> otherList;
 
     private ReentrantLock lock;
-    private InetAddress cliente1IP;
     private InetAddress cliente2IP;
     private String folder;
 
-    public HTTPCLient(Socket client, List<String> myListOfFiles, List<String> otherList, InetAddress ip1, InetAddress ip2, ReentrantLock serverLock, String folder){
+    public HTTPClient(Socket client, List<String> myListOfFiles, List<String> otherList, InetAddress ip2, ReentrantLock serverLock, String folder){
         this.client= client;
         this.myListOfFiles = myListOfFiles;
         this.otherList = otherList;
-        this.cliente1IP= ip1;
+
         this.cliente2IP= ip2;
         this.lock= serverLock;
         this.folder= folder;
@@ -68,12 +67,12 @@ public class HTTPCLient implements Runnable{
         clientOutput.write("<h2>Welcome to FolderFastSync status manager</h2>".getBytes());
         clientOutput.write("\r\n\r\n".getBytes());
         clientOutput.write(("<h3>Folder: " + this.folder).concat("</h3>").getBytes());
-        clientOutput.write(("<h3>Clients: [" + this.cliente1IP + ", " + this.cliente2IP + "]").concat("</h3>").getBytes());
-        clientOutput.write(("<h3>Files from client " + this.cliente1IP + ": ").concat(String.valueOf(this.myListOfFiles)).concat("</h3>").getBytes());
+        clientOutput.write(("<h3>Clients: [" + this.cliente2IP + "]").concat("</h3>").getBytes());
+        clientOutput.write(("<h3>My files:").concat(String.valueOf(this.myListOfFiles)).concat("</h3>").getBytes());
         clientOutput.write(("<h3>Files from client " + this.cliente2IP + ": ").concat(String.valueOf(this.otherList)).concat("</h3>").getBytes());
         List<String> l1= fileSentClient1();
         List<String> l2= fileSentClient2();
-        clientOutput.write(("<h3>Files sent to client: " + this.cliente1IP + ": " + l1).concat("</h3>").getBytes());
+        clientOutput.write(("<h3>Files sent to client: " + this.cliente2IP + ": " + l1).concat("</h3>").getBytes());
         clientOutput.write(("<h3>Files received from client: " + this.cliente2IP + ": " + l2).concat("</h3>").getBytes());
         clientOutput.write(("<h3> Number of ACK packets received: " + Receive.ACKNumber).concat("<h3>").getBytes());
         clientOutput.write(("<h3> Number of FYN packets received: " + Receive.FYNNumber).concat("<h3>").getBytes());
@@ -106,3 +105,4 @@ public class HTTPCLient implements Runnable{
         }
     }
 }
+
